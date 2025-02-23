@@ -48,9 +48,9 @@ const Navbar = () => {
         </ul>
         </div>
         <div className="navbar-end">
-        <a className="btn">
+        <li className="btn">
             <Link to='/login' >Login</Link>
-        </a>
+        </li>
         </div>
     </div>
     );
