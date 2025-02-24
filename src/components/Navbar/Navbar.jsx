@@ -4,18 +4,21 @@ import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navbar = () => {
 
-    const {name, user, signOutUser} = useContext(AuthContext);
-    console.log(name);
+    const {User, signOutUser} = useContext(AuthContext);
+
+    console.log(User);
 
     const handleSignOut = () => {
         signOutUser()
         .then(() => {
-            console.log('Sign Out');
+            console.log('Sign Out Successfully');
         })
         .catch((error) => {
-            console.log('Error', error.message);
+            console.log('Sign Out Error', error.message);
         })
     }
+
+
 
     const nav = <>
         <NavLink className='md:mr-5 font-semibold text-base' to='/' >Home</NavLink>
@@ -65,13 +68,13 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
         <li className="btn">
-            {/* <Link to='/login' >Login</Link> */}
+            
             {
-                user ? 
-                <>
-                    <span>{user.email}</span>
-                    <a onClick={handleSignOut} className="btn" > Sign Out </a>
-                </>
+                User ? 
+                <div>
+                    <span>{User.email}</span>
+                    <a onClick={handleSignOut} className="btn">Sign Out</a>
+                </div>
                 : 
                 <Link to='/login' >Login</Link>
             }

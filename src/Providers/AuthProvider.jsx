@@ -9,6 +9,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({children}) => {
 
     const [User, setUser] = useState(null);
+    
 
     const name = 'Ashraful Islam';
 
@@ -36,12 +37,17 @@ const AuthProvider = ({children}) => {
     // });
 
     useEffect( () =>{
-        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log('User Logged In', currentUser);
-            setUser(currentUser);
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            if (auth.currentUser) {
+                console.log('User Logged In', currentUser);
+                setUser(auth.currentUser);
+            } else {
+                console.log('User Logged Out');
+                setUser(null);
+            }
         });
 
-        return () =>{ unSubscribe() };
+        return () =>{ unSubscribe(); }
 
     }, []);
 
@@ -53,7 +59,7 @@ const AuthProvider = ({children}) => {
         User,
         createUser,
         signInUser,
-        signOutUser 
+        signOutUser, 
     }
 
     return (
