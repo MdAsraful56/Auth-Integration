@@ -1,18 +1,30 @@
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false);
 
+    const { signInUser } = useContext(AuthContext);
 
     const handleLogin = (e) => {
         e.preventDefault();
         const email = e.target[0].value;
         const password = e.target[1].value;
         console.log(email, password);
+
+        // user login
+        signInUser(email, password)
+        .then((result) => {
+            console.log(result.user);
+        })
+        .catch((error) => {
+            console.log( 'ERROR', error.massage);
+        })
+
     }
 
 
@@ -35,7 +47,7 @@ const Login = () => {
                     </button>
                 </label>
                 {/* <div className="validator-hint hidden">Password must contain at least 8 characters, including uppercase, lowercase letters and number</div> */}
-                <div><a onClick={1} className="link  link-hover">Forgot password?</a></div>
+                <div><a className="link  link-hover">Forgot password?</a></div>
                 <button type="submit" className="btn w-52 btn-info text-lg text-black ">Login</button>
                 <div>
                     <a >Don&apos;t have an account ? </a><Link to='/registration'> Registration</Link>
