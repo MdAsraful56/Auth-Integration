@@ -36,7 +36,7 @@ const Login = () => {
                 </label>
                 {/* <div className="validator-hint hidden">Password must contain at least 8 characters, including uppercase, lowercase letters and number</div> */}
                 <div><a onClick={1} className="link  link-hover">Forgot password?</a></div>
-                <button type="submit" className="btn w-52 btn-accent text-lg text-black ">Login</button>
+                <button type="submit" className="btn w-52 btn-info text-lg text-black ">Login</button>
                 <div>
                     <a >Don&apos;t have an account ? </a><Link to='/registration'> Registration</Link>
                 </div>
