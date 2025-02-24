@@ -6,8 +6,12 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({children}) => {
 
+    const name = 'Ashraful Islam';
+
     const authInfo = {
-        name: 'Ashraful Islam'
+        name,
+        // other data
+        
     }
 
     return (
