@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router"
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Navbar = () => {
+
+    const auth = useContext(AuthContext);
+    console.log(auth.name)
 
     const nav = <>
         <NavLink className='md:mr-5 font-semibold text-base' to='/' >Home</NavLink>

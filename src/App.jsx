@@ -4,6 +4,7 @@ import Root from './components/Root/Root'
 import Home from './components/Home/Home'
 import Login from './components/Login/Login'
 import Registration from './components/Registration/Registration'
+import AuthProvider from './Providers/AuthProvider'
 
 function App() {
 
@@ -20,7 +21,9 @@ function App() {
 
   return (
     <>
+      <AuthProvider>
         <RouterProvider router={router} />
+      </AuthProvider>
     </>
   )
 }
