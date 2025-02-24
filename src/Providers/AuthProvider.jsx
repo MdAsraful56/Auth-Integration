@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types'; // ES6
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import auth from "../Firebase/firebase.init";
 
 export const AuthContext = createContext();
@@ -20,16 +20,30 @@ const AuthProvider = ({children}) => {
         return signInWithEmailAndPassword(auth, email, password)
     };
 
+    const signOutUser = () => {
+        return signOut(auth);
+    }
 
-    onAuthStateChanged(auth, currentUser => {
-        if (currentUser) {
+
+    // onAuthStateChanged(auth, currentUser => {
+    //     if (currentUser) {
+    //         console.log('User Logged In', currentUser);
+    //         setUser(currentUser);
+    //     } else {
+    //         console.log('User Logged Out');
+    //         setUser(null);
+    //     }
+    // });
+
+    useEffect( () =>{
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log('User Logged In', currentUser);
             setUser(currentUser);
-        } else {
-            console.log('User Logged Out');
-            setUser(null);
-        }
-    });
+        });
+
+        return () =>{ unSubscribe() };
+
+    }, []);
 
 
     
@@ -38,7 +52,8 @@ const AuthProvider = ({children}) => {
         // other data
         User,
         createUser,
-        signInUser 
+        signInUser,
+        signOutUser 
     }
 
     return (
