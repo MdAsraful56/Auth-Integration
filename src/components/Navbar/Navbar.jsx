@@ -4,6 +4,7 @@ const Navbar = () => {
 
     const nav = <>
         <NavLink className='md:mr-5 font-semibold text-base' to='/' >Home</NavLink>
+        <NavLink className='md:ml-5 font-semibold text-base' to='/registration' >Registration</NavLink>
         <NavLink className='md:ml-5 font-semibold text-base' to='/login' >Login</NavLink>
     </>
 
