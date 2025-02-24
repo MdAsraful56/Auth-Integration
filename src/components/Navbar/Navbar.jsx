@@ -19,7 +19,6 @@ const Navbar = () => {
     }
 
 
-
     const nav = <>
         <NavLink className='md:mr-5 font-semibold text-base' to='/' >Home</NavLink>
         <NavLink className='md:ml-5 font-semibold text-base' to='/registration' >Registration</NavLink>
@@ -68,10 +67,9 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
         <li className="btn">
-            
             {
                 User ? 
-                <div>
+                <div className="flex items-center gap-3">
                     <span>{User.email}</span>
                     <a onClick={handleSignOut} className="btn">Sign Out</a>
                 </div>

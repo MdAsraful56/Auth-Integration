@@ -9,9 +9,7 @@ export const AuthContext = createContext();
 const AuthProvider = ({children}) => {
 
     const [User, setUser] = useState(null);
-    
 
-    const name = 'Ashraful Islam';
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
@@ -52,10 +50,7 @@ const AuthProvider = ({children}) => {
     }, []);
 
 
-    
     const authInfo = {
-        name,
-        // other data
         User,
         createUser,
         signInUser,

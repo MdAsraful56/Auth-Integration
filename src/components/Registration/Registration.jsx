@@ -27,8 +27,7 @@ const Registration = () => {
         .catch((error) => {
             console.log( 'ERROR', error.massage);
         })
-    }
-
+    };
 
 
     return (
