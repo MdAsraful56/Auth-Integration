@@ -1,11 +1,12 @@
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { useContext, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
 
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
 
     const { signInUser } = useContext(AuthContext);
@@ -21,6 +22,7 @@ const Login = () => {
         .then((result) => {
             console.log(result.user);
             e.target.reset;
+            navigate('/')
         })
         .catch((error) => {
             console.log( 'ERROR', error.massage);
