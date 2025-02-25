@@ -9,17 +9,21 @@ export const AuthContext = createContext();
 const AuthProvider = ({children}) => {
 
     const [User, setUser] = useState(null);
+    const [Loading, setLoading] = useState(true);
 
 
     const createUser = (email, password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password)
     };
 
     const signInUser = (email, password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     };
 
     const signOutUser = () => {
+        setLoading(true)
         return signOut(auth);
     }
 
@@ -39,6 +43,7 @@ const AuthProvider = ({children}) => {
             if (auth.currentUser) {
                 console.log('User Logged In', currentUser);
                 setUser(auth.currentUser);
+                setLoading(false);
             } else {
                 console.log('User Logged Out');
                 setUser(null);
@@ -52,6 +57,7 @@ const AuthProvider = ({children}) => {
 
     const authInfo = {
         User,
+        Loading,
         createUser,
         signInUser,
         signOutUser, 
