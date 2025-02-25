@@ -5,6 +5,8 @@ import Home from './components/Home/Home'
 import Login from './components/Login/Login'
 import Registration from './components/Registration/Registration'
 import AuthProvider from './Providers/AuthProvider'
+import Orders from './components/Orders/Orders'
+import PrivateRoute from './routes/PrivateRoute'
 
 function App() {
 
@@ -14,6 +16,7 @@ function App() {
         <Route index element={ <Home/> } />
         <Route path='/login' element={ <Login /> } />
         <Route path='/registration' element={ <Registration /> } />
+        <Route path='/orders' element={ <PrivateRoute><Orders/></PrivateRoute> } />
       </Route>
     )
   )

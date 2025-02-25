@@ -23,6 +23,9 @@ const Navbar = () => {
         <NavLink className='md:mr-5 font-semibold text-base' to='/' >Home</NavLink>
         <NavLink className='md:ml-5 font-semibold text-base' to='/registration' >Registration</NavLink>
         <NavLink className='md:ml-5 font-semibold text-base' to='/login' >Login</NavLink>
+        {
+            User && <NavLink className='md:ml-5 font-semibold text-base' to='/orders' >Orders</NavLink>
+        }
     </>
 
     return (
